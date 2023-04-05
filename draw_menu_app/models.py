@@ -27,3 +27,7 @@ class Menu(models.Model):
         blank=True,
         default=None,
     )
+
+    def __str__(self) -> str:
+        parent_name = self.parent.name if self.parent else None
+        return f'Menu(name={self.name}, parent={parent_name})'
