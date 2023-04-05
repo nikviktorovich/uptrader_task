@@ -1,0 +1,9 @@
+{% load draw_menu_item %}
+<li>
+    <a href="{% url 'draw_menu' menu_path %}">{{ readable_name }}</a>
+    <ul>
+        {% for menu_name in children %}
+            {% draw_menu_item menu_name %}
+        {% endfor %}
+    </ul>
+</li>
