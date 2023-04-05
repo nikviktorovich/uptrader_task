@@ -4,7 +4,6 @@ from . import models
 
 # Register your models here.
 
+@admin.register(models.Menu)
 class MenuAdmin(admin.ModelAdmin):
     pass
-
-admin.site.register(models.Menu, MenuAdmin)
