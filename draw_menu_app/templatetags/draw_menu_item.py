@@ -26,13 +26,13 @@ def draw_menu_item(context, menu_item: str):
     else:
         children = []
     
-    menu_path_head = menu_path_head + [menu_item] # Head of current menu path
-    menu_path = '/'.join(menu_path_head[1:] + ['']) # '' grants trailing slash
+    new_menu_path_head = menu_path_head + [menu_item] # Head of current menu path
+    menu_path = '/'.join(new_menu_path_head[1:] + ['']) # '' grants trailing slash
 
     return {
         'readable_name': readable_name,
         'menu_tree': menu_tree[1:],
-        'menu_path_head': menu_path_head,
+        'menu_path_head': new_menu_path_head,
         'menu_path': menu_path,
         'menu_dict': menu_dict,
         'children_dict': children_dict,
