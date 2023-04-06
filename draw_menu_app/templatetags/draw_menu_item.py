@@ -1,5 +1,8 @@
 import logging
+from typing import Dict
+from typing import List
 from django import template
+from .. import models
 
 
 logger = logging.getLogger(__name__)
@@ -9,10 +12,10 @@ register = template.Library()
 @register.inclusion_tag('draw_menu_app/draw_menu_item.html', takes_context=True)
 def draw_menu_item(context, menu_item: str):
     """Draws a single menu item"""
-    menu_tree = context['menu_tree']
-    menu_path_head = context['menu_path_head']
-    menu_dict = context['menu_dict']
-    children_dict = context['children_dict']
+    menu_tree: List[str] = context['menu_tree']
+    menu_path_head: List[str] = context['menu_path_head']
+    menu_dict: Dict[str, models.Menu] = context['menu_dict']
+    children_dict: Dict[str, List[str]] = context['children_dict']
 
     assert menu_item in menu_dict
 

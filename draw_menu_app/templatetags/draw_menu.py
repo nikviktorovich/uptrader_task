@@ -1,4 +1,6 @@
 import collections
+from typing import DefaultDict
+from typing import List
 from django import template
 from django.db.models import Q
 from .. import models
@@ -10,7 +12,7 @@ register = template.Library()
 @register.inclusion_tag('draw_menu_app/draw_menu.html', takes_context=True)
 def draw_menu(context, root: str):
     """Draws menu tree"""
-    menu_tree = context['menu_tree']
+    menu_tree: List[str] = context['menu_tree']
     menu_tree = [root] + menu_tree
 
     # Getting all needed menus
@@ -20,7 +22,7 @@ def draw_menu(context, root: str):
     menu_dict = {menu.name: menu for menu in menu_list}
 
     # Making dictionary of parents and their children menus
-    children_dict = collections.defaultdict(list)
+    children_dict: DefaultDict[str, List[str]] = collections.defaultdict(list)
     for menu in menu_list:
         if not menu.parent:
             continue
