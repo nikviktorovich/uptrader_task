@@ -29,8 +29,7 @@ def draw_menu(context, root: str):
 
     return {
         'menu_name': root,
-        'menu_tree_head': [root],
-        'menu_tree_tail': menu_tree[1:],
+        'menu_tree': menu_tree,
         'menu_path_head': [],
         'menu_dict': menu_dict,
         'children_dict': children_dict,
